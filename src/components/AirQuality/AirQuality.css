@@ -1,0 +1,30 @@
+.right-side-middle-leftDiv{
+    display: flex;
+    flex-direction: column;
+}
+.right-side-middle-leftDiv{
+    background-color:rgb(212, 212,212,0.4);
+
+    backdrop-filter: blur(15px);
+    height: 20vh;
+    border-radius: 15px;
+    padding: 10px;
+    width: 45%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.air-quality-div{
+    display: flex;
+    justify-content: space-around;
+}
+.air-quality-div div{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+@media screen and (max-width:678px){
+    .right-side-middle-leftDiv{
+        width: 100%;
+    }
+}

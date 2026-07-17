@@ -1,0 +1,28 @@
+.comingFiveDaysDiv{
+    background-color:rgb(212, 212,212,0.4);
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    backdrop-filter:blur(15px) ;
+    border-radius: 10px;
+    padding: 10px;
+}
+.FiveDaysContainer{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+.singleDay{
+    display: flex;
+    justify-content: space-between;
+}
+.singleDay div{
+    display: flex;
+    gap: 10px;
+}
+@media screen and (max-width:678px){
+    .comingFiveDaysDiv{
+        width: 90%;
+    }
+}
