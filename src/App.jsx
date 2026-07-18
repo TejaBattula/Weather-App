@@ -11,10 +11,15 @@ const App =  () => {
   const [searchData,setsearchData]=useState({})
   const [nextFiveDaysData,setnextFiveDaysData]=useState([])
   const [airQualityData,setairQualityData]=useState([])
+
+  const [isloading,setloading]=useState(false)
+  const [iserror,seterror]=useState(false)
   const handleSubmit = async (value)=>{
     console.log(value);
     const city= value||"Mumbai"
     try {
+        setloading(!isloading)
+        seterror(false)
         let response = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=3991e2b34cf5b57dd990f88ab8deb514&units=metric`)
         let data =await response.json();
         setsearchData(data)
@@ -29,16 +34,19 @@ const App =  () => {
         let response3 = await fetch(`https://api.openweathermap.org/data/2.5/air_pollution?lat=${lat}&lon=${lon}&appid=3991e2b34cf5b57dd990f88ab8deb514`)
         let airQuality = await response3.json();
         setairQualityData(airQuality)
-        
+        setloading(!isloading)
     } catch (error) {
         console.log("Error occured!");
-        
+        iserror(true)
     }
   }
   return (
     <div className='weatherapp-page'>
       <div className="searchbar">
         <SearchBar handleSubmit={handleSubmit}/>
+        <h3 style={{color : "green"}}>{isloading?"Loding please wait...":""}</h3>
+        <h3 style={{color:"red"}}>{iserror?"Error Occured!...":""}</h3>
+
       </div>
       <div className='body-section'>
         <div className="left-section">
