@@ -29,13 +29,13 @@ const App =  () => {
         
         let lon=data.coord.lon
         let response2 = await fetch(
-          `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=metric`
+          `http://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=metric`
         )
         let fivedaysforecast = await response2.json();
         setnextFiveDaysData(fivedaysforecast)
         
         let response3 = await fetch(
-          `https://api.openweathermap.org/data/2.5/air_pollution?lat=${lat}&lon=${lon}&appid=${API_KEY}`
+          `http://api.openweathermap.org/data/2.5/air_pollution?lat=${lat}&lon=${lon}&appid=${API_KEY}`
         )
         let airQuality = await response3.json();
         setairQualityData(airQuality)
