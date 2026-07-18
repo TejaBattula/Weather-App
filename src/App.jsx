@@ -22,20 +22,20 @@ const App =  () => {
     try {
         setloading(true)
         seterror(false)
-        let response = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric`)
+        let response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric`)
         let data =await response.json();
         setsearchData(data)
         let lat=data.coord.lat
         
         let lon=data.coord.lon
         let response2 = await fetch(
-          `http://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=metric`
+          `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=metric`
         )
         let fivedaysforecast = await response2.json();
         setnextFiveDaysData(fivedaysforecast)
         
         let response3 = await fetch(
-          `http://api.openweathermap.org/data/2.5/air_pollution?lat=${lat}&lon=${lon}&appid=${API_KEY}`
+          `https://api.openweathermap.org/data/2.5/air_pollution?lat=${lat}&lon=${lon}&appid=${API_KEY}`
         )
         let airQuality = await response3.json();
         setairQualityData(airQuality)
