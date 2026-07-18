@@ -14,7 +14,7 @@
 .sunrise-sunset-info{
     display: flex;
     justify-content: space-evenly;
-    padding: 20px;
+    padding: 10px;
     
 }
 .sunrise-sunset-info div{

@@ -7,6 +7,7 @@ import SunsetSunrise from './components/SunsetSunrise/SunsetSunrise'
 import HourlyForecast from './components/HourlyForecast/HourlyForecast'
 import SearchBar from './components/SearchBar/SearchBar'
 import Metricvalues from './components/Metrics/Metricvalues'
+
 const App =  () => {
   const [searchData,setsearchData]=useState({})
   const [nextFiveDaysData,setnextFiveDaysData]=useState([])
@@ -17,27 +18,32 @@ const App =  () => {
   const handleSubmit = async (value)=>{
     console.log(value);
     const city= value||"Mumbai"
+    const API_KEY = import.meta.env.VITE_WEATHER_API_KEY;
     try {
-        setloading(!isloading)
+        setloading(true)
         seterror(false)
-        let response = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=3991e2b34cf5b57dd990f88ab8deb514&units=metric`)
+        let response = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric`)
         let data =await response.json();
         setsearchData(data)
         let lat=data.coord.lat
-        console.log(lat);
         
         let lon=data.coord.lon
-        let response2 = await fetch('https://api.openweathermap.org/data/2.5/forecast?lat=17.69&lon=83.2093&appid=3991e2b34cf5b57dd990f88ab8deb514&units=metric')
+        let response2 = await fetch(
+          `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=metric`
+        )
         let fivedaysforecast = await response2.json();
         setnextFiveDaysData(fivedaysforecast)
         
-        let response3 = await fetch(`https://api.openweathermap.org/data/2.5/air_pollution?lat=${lat}&lon=${lon}&appid=3991e2b34cf5b57dd990f88ab8deb514`)
+        let response3 = await fetch(
+          `https://api.openweathermap.org/data/2.5/air_pollution?lat=${lat}&lon=${lon}&appid=${API_KEY}`
+        )
         let airQuality = await response3.json();
         setairQualityData(airQuality)
-        setloading(!isloading)
+        setloading(false)
     } catch (error) {
         console.log("Error occured!");
-        iserror(true)
+        seterror(true)
+        setloading(false)
     }
   }
   return (
