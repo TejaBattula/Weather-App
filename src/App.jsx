@@ -17,7 +17,7 @@ const App =  () => {
   const [iserror,seterror]=useState(false)
   const handleSubmit = async (value)=>{
     console.log(value);
-    const city= value||"Mumbai"
+    const city= value?value:"Mumbai"
     const API_KEY = import.meta.env.VITE_WEATHER_API_KEY;
     try {
         setloading(true)
