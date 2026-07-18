@@ -50,7 +50,7 @@ const App =  () => {
     <div className='weatherapp-page'>
       <div className="searchbar">
         <SearchBar handleSubmit={handleSubmit}/>
-        <h3 style={{color : "green",width:"100%",textAlign:'center'}}>{isloading?"Loding please wait...":""}</h3>
+        <h3 style={{color : "green",width:"100%",textAlign:'center',padding:"10px"}}>{isloading?"Loding please wait...":""}</h3>
         <h3 style={{color:"red"}}>{iserror?"Error Occured!...":""}</h3>
 
       </div>
