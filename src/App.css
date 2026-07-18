@@ -46,6 +46,24 @@ p,h1,h2,h3,h4,h5,h6{
 }.hourlyTemp{
   width: 100%;
 }
+.live-btn{
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background-color: red;
+  animation: grow 0.7s infinite alternate ease-in-out;
+}
+@keyframes grow {
+  from {
+    transform: scale(1);
+    opacity: 0.7;
+  }
+  to {
+    transform: scale(1.3);
+    opacity: 1;
+  }
+}
 @media screen and (max-width:678px){
   
   .body-section{

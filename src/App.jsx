@@ -16,7 +16,6 @@ const App =  () => {
   const [isloading,setloading]=useState(false)
   const [iserror,seterror]=useState(false)
   const handleSubmit = async (value)=>{
-    console.log(value);
     const city= value?value:"Mumbai"
     const API_KEY = import.meta.env.VITE_WEATHER_API_KEY;
     try {
@@ -49,6 +48,10 @@ const App =  () => {
   return (
     <div className='weatherapp-page'>
       <div className="searchbar">
+        <div style={{display:"flex",justifyContent:"center",alignItems:"center",paddingTop:"20px",gap:"20px"}}>
+          <span className='live-btn'></span>
+          <h1 style={{textAlign:"center"}}>Live Weather Forecast</h1>
+        </div>
         <SearchBar handleSubmit={handleSubmit}/>
         <h3 style={{color : "green",width:"100%",textAlign:'center',padding:"10px"}}>{isloading?"Loding please wait...":""}</h3>
         <h3 style={{color:"red"}}>{iserror?"Error Occured!...":""}</h3>
